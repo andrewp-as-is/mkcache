@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+{ set +x; } 2>/dev/null
+
+usage() {
+    cat <<EOF 1>&2
+usage: $(basename $0) args ...
+EOF
+    [[ $1 == "-h" ]] || [[ $1 == "--help" ]]; exit
+}
+
+[[ $1 == "-h" ]] || [[ $1 == "--help" ]] && usage "$@"
+
+[[ $# == 0 ]] && usage
+
+XDG_CACHE_HOME="${XDG_CACHE_HOME-$HOME/.config}"
+MKCACHE="${MKCACHE-$XDG_CACHE_HOME/mkcache}"
+
+! [ -e "$MKCACHE" ] && { mkdir -p "$MKCACHE" || exit; }
+
+shasum="$(echo "$@" | shasum -a 1 | awk '{print $1}')"
+[[ -z "$shasum" ]] && echo "ERROR: shasum is EMPTY" 1>&2 && exit 1
+
+path="$MKCACHE/$shasum"
+echo "$path"
+

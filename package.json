@@ -1,0 +1,13 @@
+{
+  "name": "mkcache",
+  "version": "2019.5.22",
+  "description": "make cache file. inspired by 'mktemp'",
+  "keywords": [
+    "cache"
+  ],
+  "homepage": "https://github.com/looking-for-a-job/mkcache",
+  "license": "Unlicense",
+  "bin": {
+    "mkcache": "./scripts/mkcache"
+  }
+}
