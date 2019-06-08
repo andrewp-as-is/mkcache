@@ -1,6 +1,6 @@
 {
   "name": "mkcache",
-  "version": "2019.5.22",
+  "version": "2019.6.8",
   "description": "make cache file. inspired by 'mktemp'",
   "keywords": [
     "cache"

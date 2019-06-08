@@ -32,11 +32,17 @@ command|`usage`
 `mkcache` |`usage: mkcache args ...`
 
 #### Examples
-speed up macOS tts with mkcache:
+example 1. speed up macOS tts with mkcache:
 ```bash
 path="$(mkcache "$@")"
 ! [ -e "$path" ] && /usr/bin/say "$@" -o "$path"
 afplay "$path"
+```
+
+example 2. execute script once:
+```bash
+path="$(mkcache script "$@")"
+! [ -e "$path" ] && { script "$@" || exit; touch "$path"; }
 ```
 
 <p align="center">
